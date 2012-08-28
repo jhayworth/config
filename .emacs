@@ -16,6 +16,12 @@
 	(interactive)
 	(set-selective-display (if selective-display nil 1)))
 
+;; Marmalade package management
+(require 'package)
+(add-to-list 'package-archives
+	'("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
 ;; ido mode
 (require 'ido)
 (ido-mode t)
