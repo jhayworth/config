@@ -11,11 +11,6 @@
 ;; Load Miscelaneous Libraries
 (setq load-path (cons (expand-file-name "~/emacs/misc") load-path))
 
-;; Custom Functions
-(defun jmh-toggle-selective-display ()
-	(interactive)
-	(set-selective-display (if selective-display nil 1)))
-
 ;; Marmalade package management
 (require 'package)
 (add-to-list 'package-archives
