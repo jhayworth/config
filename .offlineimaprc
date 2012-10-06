@@ -1,0 +1,23 @@
+[general]
+ui = ttyui
+accounts = JoshuaHayworth-Corporate
+fsync = False
+
+[Account JoshuaHayworth-Corporate]
+localrepository = JoshuaHayworth-Local
+remoterepository = JoshuaHayworth-Remote
+status_backend = sqlite
+postsynchook = notmuch new
+
+[Repository JoshuaHayworth-Local]
+type = Maildir
+localfolders = ~/.mail/joshua.hayworth-kratosdefense.com
+
+[Repository JoshuaHayworth-Remote]
+type = IMAP
+maxconnections = 1
+remotehost = webmail.kratosdefense.com
+remoteuser = wfinet\joshua.hayworth
+remotepass = H31sl0rd42568!2012)(@
+realdelete = no
+ssl = yes
