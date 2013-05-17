@@ -1,8 +1,8 @@
-(defvar emacs-root (if (or (eq system-type 'cygwin)
-						   (eq system-type 'linux))
-						   "/home/joshua.hayworth"
-						   "c:/home/joshua.hayworth")
-"Home directory -- the root of personal emacs load-path")
+;;(defvar emacs-root (if (or (eq system-type 'cygwin)
+;;						   (eq system-type 'linux))
+;;						   "/home/joshua.hayworth"
+;;						   "c:/home/joshua.hayworth")
+;;"Home directory -- the root of personal emacs load-path")
 
 ;; Startup
 (setq initial-scratch-message "")
