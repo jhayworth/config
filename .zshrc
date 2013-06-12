@@ -7,13 +7,16 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="aussiegeek"
 
-# Example aliases
-alias e="emacs"
+# Aliases
+alias l="ls -Afhl -g --color"
+alias e="emacs --no-window-system --quick"
 alias zshconfig="e ~/.zshrc"
 alias ohmyzsh="e ~/.oh-my-zsh"
+alias m="more"
+alias notify="python ~/bin/pushovertest.py"
 
 # Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
@@ -34,4 +37,14 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
+# History settings
+export HISTSIZE=100000
+export SAVEHIST=100000
+
+# Editor settings
+export EDITOR="emacs"
+
+# Compiler settings
+export CC=/usr/local/bin/clang
+export CXX=/usr/local/bin/clang++
+
