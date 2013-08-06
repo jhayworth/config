@@ -1,11 +1,5 @@
 ;; init.el --- Joshua's attempt at multi-platform emacs configuration
 
-(defvar emacs-root (if (or (eq system-type 'cygwin)
-			   (eq system-type 'linux))
-				   "/home/joshua.hayworth"
-				   "c:/home/joshua.hayworth")
-"Home directory -- the root of personal emacs load-path")
-
 ;; Startup
 (add-to-list 'load-path "~/.emacs.d/")
 
@@ -36,6 +30,9 @@
 (require 'ido)
 (ido-mode t)
 
+(require 'whitespace)
+(require 'highlight-symbol)
+
 ;; magit mode
 (require 'magit)
 (require 'magit-svn)
@@ -61,17 +58,31 @@
 (setq ac-ignore-case nil)
 (ac-config-default)
 
+;; Common language hook
+(add-hook 'c-mode-common-hook
+	  (lambda ()
+	    ;; 4 space tabs, insert spaces
+	    (setq-default c-default-style "linux"
+			  indent-tabs-mode nil
+			  c-basic-offset 4)
+	    ;; turn on line numbers
+	    (linum-mode t)))
+
 ;; JavaScript specific settings
 (add-hook 'js-mode-hook
-	(lambda ()
-		;; Scan the file for nested code blocks
-		(imenu-add-menubar-index)
-		;; Activate the folding mode
-		(hs-minor-mode t)))
+	  (lambda ()
+	    ;; Scan the file for nested code blocks
+	    (imenu-add-menubar-index)
+
+	    ;; Activate the folding mode
+	    (hs-minor-mode t)))
 
 ;; Set smooth scrolling
 (setq scroll-step 1
       scroll-conservatively 10000)
+
+;; Autocreation of new lines at the end of a buffer
+(setq next-line-add-newlines t)
 
 ;; Custom Keybindings
 (global-set-key "\C-c\C-e" 'eval-expression)
@@ -83,6 +94,10 @@
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
 (global-set-key [f5] 'compile)
+(global-set-key [f3] 'highlight-symbol-at-point)
+(global-set-key [(control f3)] 'highlight-symbol-next)
+(global-set-key [(shift f3)] 'highlight-symbol-prev)
+(global-set-key [(meta f3)] 'highlight-symbol-query-replace)
 (global-set-key [f12] 'call-last-kbd-macro)
 
 (delete-selection-mode t)
