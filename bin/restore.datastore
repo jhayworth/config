@@ -1,2 +1,2 @@
 #!/bin/bash
-rsync -avz -e ssh --progress git.hayworthsoftware.com:/opt/sync/personal .
+rsync -avz -e ssh --progress git.hayworthsoftware.com:/opt/sync/personal/ ~/Datastore
