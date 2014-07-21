@@ -10,8 +10,7 @@
 ;; Remove backups
 (setq make-backup-files nil)
 
-;; Turn off the crap (scrollbar, toolbar, menu bar)
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+;; Turn off the toolbar, menu bar
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
@@ -20,7 +19,7 @@
 (load-theme 'noctilux t)
 
 ;; Marmalade package management
-(require 'package)
+;;(require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 			 ("marmalade" . "http://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.milkbox.net/packages/")))
@@ -32,6 +31,7 @@
 
 (require 'whitespace)
 (require 'highlight-symbol)
+(require 'minimap)
 
 ;; magit mode
 (require 'magit)
@@ -43,7 +43,7 @@
        "blue3" "magenta4" "cyan4" "white"])
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-(add-hook 'shell-mode-hook 
+(add-hook 'shell-mode-hook
      '(lambda () (toggle-truncate-lines 1)))
 (setq comint-prompt-read-only t)
 
@@ -58,6 +58,11 @@
 (setq ac-ignore-case nil)
 (ac-config-default)
 
+; turn off line truncation by default
+(set-default 'truncate-lines t)
+(set-default 'truncate-partial-width-windows nil)
+
+;; ***************** HOOKS *****************
 ;; Common language hook
 (add-hook 'c-mode-common-hook
 	  (lambda ()
@@ -65,6 +70,10 @@
 	    (setq-default c-default-style "linux"
 			  indent-tabs-mode nil
 			  c-basic-offset 4)
+
+	    ;; turn on 'show matching parens'
+	    (show-paren-mode 1)
+
 	    ;; turn on line numbers
 	    (linum-mode t)))
 
@@ -74,8 +83,17 @@
 	    ;; Scan the file for nested code blocks
 	    (imenu-add-menubar-index)
 
+	    ;; turn on 'show matching parens'
+	    (show-paren-mode 1)
+
+	    ;; turn on line numbers
+	    (linum-mode t)
+
 	    ;; Activate the folding mode
 	    (hs-minor-mode t)))
+
+;; General cleanup
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Set smooth scrolling
 (setq scroll-step 1
@@ -93,6 +111,7 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
+(global-set-key (kbd "<escape>") 'save-buffers-kill-terminal)
 (global-set-key [f5] 'compile)
 (global-set-key [f3] 'highlight-symbol-at-point)
 (global-set-key [(control f3)] 'highlight-symbol-next)
