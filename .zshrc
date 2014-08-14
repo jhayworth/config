@@ -13,7 +13,8 @@ alias e="emacs --no-window-system --quick"
 alias zshconfig="e ~/.zshrc"
 alias ohmyzsh="e ~/.oh-my-zsh"
 alias m="more"
-alias notify="python ~/bin/pushovertest.py"
+alias c.deploy="~/bin/compass.deploy"
+alias c.buildsetup=". ~/bin/compass.build.setup"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -44,7 +45,11 @@ export SAVEHIST=100000
 # Editor settings
 export EDITOR="emacs"
 
-# Compiler settings
-export CC=/usr/local/bin/clang
-export CXX=/usr/local/bin/clang++
+# ssh-agent settings
+export SSHAGENT="/usr/bin/ssh-agent"
+export SSHAGENTARGS="-s"
 
+if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
+    eval `$SSHAGENT $SSHAGENTARGS`
+    trap "kill $SSH_AGENT_PID" 0
+fi
