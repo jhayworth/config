@@ -1,7 +1,6 @@
 ;; init.el --- Joshua's attempt at multi-platform emacs configuration
-
-;; Startup
-(add-to-list 'load-path "~/.emacs.d/")
+(setq user-full-name "Joshua Hayworth")
+(setq user-mail-address "joshua@hayworthfamily.com")
 
 ;; No splash screen please or content in my scratch pad
 (setq initial-scratch-message "")
@@ -30,12 +29,12 @@
 (ido-mode t)
 
 (require 'whitespace)
-(require 'highlight-symbol)
+;;(require 'highlight-symbol)
 (require 'minimap)
 
 ;; magit mode
-(require 'magit)
-(require 'magit-svn)
+;;(require 'magit)
+;;(require 'magit-svn)
 
 ;; Shell mode
 (setq ansi-color-names-vector ; better contrast colors
@@ -48,15 +47,15 @@
 (setq comint-prompt-read-only t)
 
 ;; Auto-Complete mode
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
+;;(require 'auto-complete-config)
+;;(add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
 
 ; start auto-completion after 2 characters of a word
-(setq ac-auto-start 2)
+;;(setq ac-auto-start 2)
 
 ; case sensitivity is important when finding matches
-(setq ac-ignore-case nil)
-(ac-config-default)
+;;(setq ac-ignore-case nil)
+;;(ac-config-default)
 
 ; turn off line truncation by default
 (set-default 'truncate-lines t)
@@ -113,10 +112,10 @@
 
 (global-set-key (kbd "<escape>") 'save-buffers-kill-terminal)
 (global-set-key [f5] 'compile)
-(global-set-key [f3] 'highlight-symbol-at-point)
-(global-set-key [(control f3)] 'highlight-symbol-next)
-(global-set-key [(shift f3)] 'highlight-symbol-prev)
-(global-set-key [(meta f3)] 'highlight-symbol-query-replace)
+;;(global-set-key [f3] 'highlight-symbol-at-point)
+;;(global-set-key [(control f3)] 'highlight-symbol-next)
+;;(global-set-key [(shift f3)] 'highlight-symbol-prev)
+;;(global-set-key [(meta f3)] 'highlight-symbol-query-replace)
 (global-set-key [f12] 'call-last-kbd-macro)
 
 (delete-selection-mode t)
