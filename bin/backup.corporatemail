@@ -1,2 +1,25 @@
 #!/bin/bash
-rsync -avz -e ssh --progress ~/Datastore/ git.hayworthsoftware.com:/opt/sync/personal
+
+TMPDIR=`mktemp -dt "back.XXXXXXXXXX"`
+
+echo "Temp Directory: ${TMPDIR}"
+
+cd ${TMPDIR}
+
+# Copy personal .pst over to temporary area
+cp /cygdrive/c/Users/joshua.hayworth.KRATOS/Filed.pst ${TMPDIR}
+
+# Copy personal .ost over to temporary area
+cp /cygdrive/c/Users/joshua.hayworth.KRATOS/AppData/Local/Microsoft/Outlook/outlook.ost ${TMPDIR}
+
+# Zip them up
+tar -pczf corporatemail.tar.gz ${TMPDIR}
+
+# Cleanup
+rm Filed.pst
+rm outlook.ost
+
+# Send them over
+scp ${TMPDIR}/corporatemail.tar.gz git.hayworthsoftware.com:/opt/sync/corporate/
+
+rm -rf ${TMPDIR}
