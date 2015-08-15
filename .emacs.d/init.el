@@ -14,7 +14,7 @@
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 ;; Source load path
-(add-to-list 'load-path (expand-file-name "~/dotfiles/emacs"))
+(add-to-list 'load-path (expand-file-name "~/emacs"))
 
 ;; Theme load path
 (add-to-list 'custom-theme-load-path "~/.emacs.d/color-themes")
