@@ -16,6 +16,10 @@ alias m="more"
 alias c.deploy="~/bin/compass.deploy"
 alias c.buildsetup=". ~/bin/compass.build.setup"
 
+
+# Adding local bin directory to PATH for utilities
+export PATH=$PATH:$HOME/bin
+
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
 

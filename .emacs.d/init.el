@@ -13,9 +13,16 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
+;; Source load path
+(add-to-list 'load-path (expand-file-name "~/emacs"))
+
 ;; Theme load path
 (add-to-list 'custom-theme-load-path "~/.emacs.d/color-themes")
 (load-theme 'noctilux t)
+
+;; Fun startup message
+(defun display-startup-echo-area-message ()
+  (message "Let the hacking begin!"))
 
 ;; Marmalade package management
 ;;(require 'package)
@@ -29,8 +36,9 @@
 (ido-mode t)
 
 (require 'whitespace)
-;;(require 'highlight-symbol)
+(require 'highlight-symbol)
 (require 'minimap)
+(require 'joshua-c)
 
 ;; magit mode
 ;;(require 'magit)
@@ -62,20 +70,6 @@
 (set-default 'truncate-partial-width-windows nil)
 
 ;; ***************** HOOKS *****************
-;; Common language hook
-(add-hook 'c-mode-common-hook
-	  (lambda ()
-	    ;; 4 space tabs, insert spaces
-	    (setq-default c-default-style "linux"
-			  indent-tabs-mode nil
-			  c-basic-offset 4)
-
-	    ;; turn on 'show matching parens'
-	    (show-paren-mode 1)
-
-	    ;; turn on line numbers
-	    (linum-mode t)))
-
 ;; JavaScript specific settings
 (add-hook 'js-mode-hook
 	  (lambda ()
@@ -111,10 +105,8 @@
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
 (global-set-key [f5] 'compile)
-;;(global-set-key [f3] 'highlight-symbol-at-point)
-;;(global-set-key [(control f3)] 'highlight-symbol-next)
-;;(global-set-key [(shift f3)] 'highlight-symbol-prev)
-;;(global-set-key [(meta f3)] 'highlight-symbol-query-replace)
+(global-set-key [f3] 'highlight-symbol-at-point)
+(global-set-key [(control f3)] 'highlight-symbol-query-replace)
 (global-set-key [f12] 'call-last-kbd-macro)
 
 (delete-selection-mode t)
