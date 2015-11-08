@@ -14,6 +14,9 @@
       ;; turn on line numbers
       (linum-mode t)
 
+      ;; turn on irony mode
+      (irony-mode t)
+
       ;; Show the current function
       (which-function-mode t)
 
