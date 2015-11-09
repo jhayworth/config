@@ -104,15 +104,22 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
-(global-set-key (kbd "<escape>") 'save-buffers-kill-terminal)
 (global-set-key [f5] 'compile)
 (global-set-key [f3] 'highlight-symbol-at-point)
-(global-set-key [(control f3)] 'highlight-symbol-next)
-(global-set-key [(shift f3)] 'highlight-symbol-prev)
-;;(global-set-key [(meta f3)] 'highlight-symbol-query-replace)
+(global-set-key [(control f3)] 'highlight-symbol-query-replace)
 (global-set-key [f12] 'call-last-kbd-macro)
 
 (delete-selection-mode t)
 
-
-(shell)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#202020" :foreground "#cccccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "outline" :family "Consolas")))))
