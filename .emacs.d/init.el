@@ -39,6 +39,7 @@
 (require 'highlight-symbol)
 (require 'minimap)
 (require 'joshua-c)
+(require 'joshua-diff)
 
 ;; magit mode
 ;;(require 'magit)
@@ -94,6 +95,9 @@
 
 ;; Autocreation of new lines at the end of a buffer
 (setq next-line-add-newlines t)
+
+;; Command line switches
+(add-to-list 'command-switch-alist '("diff" . joshua-command-line-diff))
 
 ;; Custom Keybindings
 (global-set-key "\C-c\C-e" 'eval-expression)
