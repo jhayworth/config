@@ -36,8 +36,7 @@
 (ido-mode t)
 
 (require 'whitespace)
-(require 'highlight-symbol)
-(require 'minimap)
+(require 'hydra)
 (require 'joshua-c)
 (require 'joshua-diff)
 
@@ -112,6 +111,11 @@
 (global-set-key [f3] 'highlight-symbol-at-point)
 (global-set-key [(control f3)] 'highlight-symbol-query-replace)
 (global-set-key [f12] 'call-last-kbd-macro)
+
+(defhydra hydra-zoom (global-map "<f2>")
+      "zoom"
+      ("g" text-scale-increase "in")
+      ("l" text-scale-decrease "out"))
 
 (delete-selection-mode t)
 
