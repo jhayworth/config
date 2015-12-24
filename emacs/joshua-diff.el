@@ -6,12 +6,14 @@
 
   (ediff file1 file2)))
 
-(setq ediff-split-window-function (quote split-window-horizontally))
+(setq ediff-split-window-function 'split-window-horizontally)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (add-hook 'ediff-prepare-buffer-hook
 	  (lambda()
-
 	    ;; turn on line numbers
 	    (setq linum-format "%d ") (quote linum-mode)
 	  )
 )
+
+(add-hook 'ediff-quit-hook 'save-buffers-kill-terminal)
