@@ -37,6 +37,8 @@
 
 (require 'whitespace)
 (require 'hydra)
+(require 'hydra-examples)
+(require 'key-chord)
 (require 'joshua-c)
 (require 'joshua-diff)
 
@@ -112,10 +114,13 @@
 (global-set-key [(control f3)] 'highlight-symbol-query-replace)
 (global-set-key [f12] 'call-last-kbd-macro)
 
-(defhydra hydra-zoom (global-map "<f2>")
-      "zoom"
-      ("g" text-scale-increase "in")
-      ("l" text-scale-decrease "out"))
+;; Hydra keybindings
+(setq hydra-examples-verbatim t)
+(define-key Buffer-menu-mode-map "." 'hydra-buffer-menu/body)
+
+;; key-chords
+;;(key-chord-mode 1)
+;;(key-chord-define-global "ss" 'hydra-splitter/body)
 
 (delete-selection-mode t)
 
