@@ -20,16 +20,15 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/color-themes")
 (load-theme 'noctilux t)
 
-;; Fun startup message
-(defun display-startup-echo-area-message ()
-  (message "Let the hacking begin!"))
-
 ;; Marmalade package management
 ;;(require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 			 ("marmalade" . "http://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.milkbox.net/packages/")))
 (package-initialize)
+
+;; Turn on hydra examples
+(setq hydra-examples-verbatim t)
 
 ;; ido mode
 (require 'ido)
@@ -109,17 +108,17 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
-(global-set-key [f5] 'compile)
 (global-set-key [f3] 'highlight-symbol-at-point)
 (global-set-key [(control f3)] 'highlight-symbol-query-replace)
 (global-set-key [f12] 'call-last-kbd-macro)
 
 ;; Hydra keybindings
-(setq hydra-examples-verbatim t)
 (define-key Buffer-menu-mode-map "." 'hydra-buffer-menu/body)
 
 ;; key-chords
-;;(key-chord-mode 1)
+(key-chord-mode 1)
+(key-chord-define-global "cc" 'compile)
+(key-chord-define-global "hs" 'highlight-symbol-at-point)
 ;;(key-chord-define-global "ss" 'hydra-splitter/body)
 
 (delete-selection-mode t)
