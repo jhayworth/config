@@ -13,9 +13,7 @@ alias e="emacs --no-window-system --quick"
 alias zshconfig="e ~/.zshrc"
 alias ohmyzsh="e ~/.oh-my-zsh"
 alias m="more"
-alias c.deploy="~/bin/compass.deploy"
-alias c.buildsetup=". ~/bin/compass.build.setup"
-
+alias mm="make --file makefile"
 
 # Adding local bin directory to PATH for utilities
 export PATH=$PATH:$HOME/bin
