@@ -37,7 +37,8 @@
 (require 'whitespace)
 (require 'hydra)
 (require 'hydra-examples)
-(require 'key-chord)
+;; (require 'key-chord)
+(require 'ggtags)
 (require 'joshua-c)
 (require 'joshua-diff)
 
@@ -112,13 +113,22 @@
 (global-set-key [(control f3)] 'highlight-symbol-query-replace)
 (global-set-key [f12] 'call-last-kbd-macro)
 
+(define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
+(define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
+(define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
+(define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
+(define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
+(define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
+
+(define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
+
 ;; Hydra keybindings
-(define-key Buffer-menu-mode-map "." 'hydra-buffer-menu/body)
+;;(define-key Buffer-menu-mode-map "." 'hydra-buffer-menu/body)
 
 ;; key-chords
-(key-chord-mode 1)
-(key-chord-define-global "cc" 'compile)
-(key-chord-define-global "hs" 'highlight-symbol-at-point)
+;;(key-chord-mode 1)
+;;(key-chord-define-global "cc" 'compile)
+;;(key-chord-define-global "hs" 'highlight-symbol-at-point)
 ;;(key-chord-define-global "ss" 'hydra-splitter/body)
 
 (delete-selection-mode t)
