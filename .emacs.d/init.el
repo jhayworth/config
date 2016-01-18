@@ -39,8 +39,15 @@
 (require 'hydra-examples)
 ;; (require 'key-chord)
 (require 'ggtags)
+(require 'company)
 (require 'joshua-c)
 (require 'joshua-diff)
+
+;; company mode initialization
+(add hook 'after-init-hook 'global-company-mode)
+(setq company-backends (delete 'company-semantic company-backends))
+(define-key c-mode-map  [(tab)] 'company-complete)
+(define-key c++-mode-map  [(tab)] 'company-complete)
 
 ;; magit mode
 ;;(require 'magit)
