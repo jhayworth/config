@@ -14,6 +14,7 @@ alias zshconfig="e ~/.zshrc"
 alias ohmyzsh="e ~/.oh-my-zsh"
 alias m="more"
 alias mm="make --file makefile"
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Adding local bin directory to PATH for utilities
 export PATH=$PATH:$HOME/bin
