@@ -10,9 +10,8 @@ ZSH_THEME="aussiegeek"
 # Aliases
 alias l="ls -Afhl -g --color"
 alias e="emacs --no-window-system --quick"
-alias zshconfig="e ~/.zshrc"
-alias ohmyzsh="e ~/.oh-my-zsh"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias mm="make --file makefile"
 
 # Adding local bin directory to PATH for utilities
 export PATH=$PATH:$HOME/bin
