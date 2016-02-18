@@ -30,28 +30,25 @@
 ;; Turn on hydra examples
 (setq hydra-examples-verbatim t)
 
-;; ido mode
 (require 'ido)
 (ido-mode t)
 
 (require 'whitespace)
 (require 'hydra)
 (require 'hydra-examples)
-;; (require 'key-chord)
 (require 'ggtags)
 (require 'company)
+(require 'magit)
+
+;; My personal code
 (require 'joshua-c)
 (require 'joshua-diff)
 
 ;; company mode initialization
-(add hook 'after-init-hook 'global-company-mode)
+(add-hook 'after-init-hook 'global-company-mode)
 (setq company-backends (delete 'company-semantic company-backends))
-(define-key c-mode-map  [(tab)] 'company-complete)
-(define-key c++-mode-map  [(tab)] 'company-complete)
-
-;; magit mode
-;;(require 'magit)
-;;(require 'magit-svn)
+;; 
+;; (define-key c++-mode-map  [(tab)] 'company-complete)
 
 ;; Shell mode
 (setq ansi-color-names-vector ; better contrast colors
@@ -116,6 +113,8 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
+(global-set-key (kbd "C-x g") 'magit-status)
+
 (global-set-key [f3] 'highlight-symbol-at-point)
 (global-set-key [(control f3)] 'highlight-symbol-query-replace)
 (global-set-key [f12] 'call-last-kbd-macro)
@@ -129,14 +128,13 @@
 
 (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
 
+;;(define-key c-mode-base-map [(tab)] 'company-complete)
+;;(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
+
+
 ;; Hydra keybindings
 ;;(define-key Buffer-menu-mode-map "." 'hydra-buffer-menu/body)
 
-;; key-chords
-;;(key-chord-mode 1)
-;;(key-chord-define-global "cc" 'compile)
-;;(key-chord-define-global "hs" 'highlight-symbol-at-point)
-;;(key-chord-define-global "ss" 'hydra-splitter/body)
 
 (delete-selection-mode t)
 
