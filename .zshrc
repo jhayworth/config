@@ -12,10 +12,7 @@ alias l="ls -Afhl -g --color"
 alias e="emacs --no-window-system --quick"
 alias zshconfig="e ~/.zshrc"
 alias ohmyzsh="e ~/.oh-my-zsh"
-alias m="more"
-alias c.deploy="~/bin/compass.deploy"
-alias c.buildsetup=". ~/bin/compass.build.setup"
-
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Adding local bin directory to PATH for utilities
 export PATH=$PATH:$HOME/bin
