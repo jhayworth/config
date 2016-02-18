@@ -1,9 +1,9 @@
-(provide 'joshua-c)
+(provide 'joshua-java)
 
-(add-hook 'c-mode-common-hook
+(add-hook 'java-mode-common-hook
     (lambda ()
         ;; 4 space tabs, insert spaces
-        (setq-default c-default-style "linux"
+        (setq-default c-default-style "java"
                       indent-tabs-mode nil
                       c-basic-offset 4)
 

@@ -30,20 +30,25 @@
 ;; Turn on hydra examples
 (setq hydra-examples-verbatim t)
 
-;; ido mode
 (require 'ido)
 (ido-mode t)
 
 (require 'whitespace)
 (require 'hydra)
 (require 'hydra-examples)
-(require 'key-chord)
+(require 'ggtags)
+(require 'company)
+(require 'magit)
+
+;; My personal code
 (require 'joshua-c)
 (require 'joshua-diff)
 
-;; magit mode
-;;(require 'magit)
-;;(require 'magit-svn)
+;; company mode initialization
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-backends (delete 'company-semantic company-backends))
+;; 
+;; (define-key c++-mode-map  [(tab)] 'company-complete)
 
 ;; Shell mode
 (setq ansi-color-names-vector ; better contrast colors
@@ -108,18 +113,28 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
+(global-set-key (kbd "C-x g") 'magit-status)
+
 (global-set-key [f3] 'highlight-symbol-at-point)
 (global-set-key [(control f3)] 'highlight-symbol-query-replace)
 (global-set-key [f12] 'call-last-kbd-macro)
 
-;; Hydra keybindings
-(define-key Buffer-menu-mode-map "." 'hydra-buffer-menu/body)
+(define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
+(define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
+(define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
+(define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
+(define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
+(define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
 
-;; key-chords
-(key-chord-mode 1)
-(key-chord-define-global "cc" 'compile)
-(key-chord-define-global "hs" 'highlight-symbol-at-point)
-;;(key-chord-define-global "ss" 'hydra-splitter/body)
+(define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
+
+;;(define-key c-mode-base-map [(tab)] 'company-complete)
+;;(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
+
+
+;; Hydra keybindings
+;;(define-key Buffer-menu-mode-map "." 'hydra-buffer-menu/body)
+
 
 (delete-selection-mode t)
 

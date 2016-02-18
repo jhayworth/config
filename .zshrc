@@ -10,9 +10,7 @@ ZSH_THEME="aussiegeek"
 # Aliases
 alias l="ls -Afhl -g --color"
 alias e="emacs --no-window-system --quick"
-alias zshconfig="e ~/.zshrc"
-alias ohmyzsh="e ~/.oh-my-zsh"
-alias m="more"
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias mm="make --file makefile"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
