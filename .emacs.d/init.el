@@ -31,11 +31,10 @@
 (setq hydra-examples-verbatim t)
 
 (require 'ido)
-(ido-mode t)
-
 (require 'whitespace)
 (require 'hydra)
 (require 'hydra-examples)
+(require 'org)
 (require 'ggtags)
 (require 'company)
 (require 'magit)
@@ -44,11 +43,11 @@
 (require 'joshua-c)
 (require 'joshua-diff)
 
+(ido-mode t)
+
 ;; company mode initialization
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-backends (delete 'company-semantic company-backends))
-;; 
-;; (define-key c++-mode-map  [(tab)] 'company-complete)
 
 ;; Shell mode
 (setq ansi-color-names-vector ; better contrast colors
@@ -127,6 +126,9 @@
 (define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
 
 (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
+
+;; org mode keybindings
+(global-set-key (kbd "C-c l") 'org-agenda)
 
 ;;(define-key c-mode-base-map [(tab)] 'company-complete)
 ;;(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
