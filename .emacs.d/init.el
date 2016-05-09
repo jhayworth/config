@@ -27,27 +27,12 @@
 			 ("melpa" . "http://melpa.milkbox.net/packages/")))
 (package-initialize)
 
-;; Turn on hydra examples
-(setq hydra-examples-verbatim t)
-
 (require 'ido)
-(require 'whitespace)
-(require 'hydra)
-(require 'hydra-examples)
-(require 'org)
-(require 'ggtags)
-(require 'company)
-(require 'magit)
 
 ;; My personal code
 (require 'joshua-c)
-(require 'joshua-diff)
 
 (ido-mode t)
-
-;; company mode initialization
-(add-hook 'after-init-hook 'global-company-mode)
-(setq company-backends (delete 'company-semantic company-backends))
 
 ;; Shell mode
 (setq ansi-color-names-vector ; better contrast colors
@@ -59,36 +44,9 @@
      '(lambda () (toggle-truncate-lines 1)))
 (setq comint-prompt-read-only t)
 
-;; Auto-Complete mode
-;;(require 'auto-complete-config)
-;;(add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
-
-; start auto-completion after 2 characters of a word
-;;(setq ac-auto-start 2)
-
-; case sensitivity is important when finding matches
-;;(setq ac-ignore-case nil)
-;;(ac-config-default)
-
 ; turn off line truncation by default
 (set-default 'truncate-lines t)
 (set-default 'truncate-partial-width-windows nil)
-
-;; ***************** HOOKS *****************
-;; JavaScript specific settings
-(add-hook 'js-mode-hook
-	  (lambda ()
-	    ;; Scan the file for nested code blocks
-	    (imenu-add-menubar-index)
-
-	    ;; turn on 'show matching parens'
-	    (show-paren-mode 1)
-
-	    ;; turn on line numbers
-	    (linum-mode t)
-
-	    ;; Activate the folding mode
-	    (hs-minor-mode t)))
 
 ;; General cleanup
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -96,12 +54,6 @@
 ;; Set smooth scrolling
 (setq scroll-step 1
       scroll-conservatively 10000)
-
-;; Autocreation of new lines at the end of a buffer
-(setq next-line-add-newlines t)
-
-;; Command line switches
-(add-to-list 'command-switch-alist '("diff" . joshua-command-line-diff))
 
 ;; Custom Keybindings
 (global-set-key "\C-c\C-e" 'eval-expression)
@@ -111,8 +63,6 @@
 (global-set-key (kbd "S-C-<left>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
-
-(global-set-key (kbd "C-x g") 'magit-status)
 
 (global-set-key [f3] 'highlight-symbol-at-point)
 (global-set-key [(control f3)] 'highlight-symbol-query-replace)
@@ -124,19 +74,6 @@
 (define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
 (define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
 (define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
-
-(define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
-
-;; org mode keybindings
-(global-set-key (kbd "C-c l") 'org-agenda)
-
-;;(define-key c-mode-base-map [(tab)] 'company-complete)
-;;(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-
-
-;; Hydra keybindings
-;;(define-key Buffer-menu-mode-map "." 'hydra-buffer-menu/body)
-
 
 (delete-selection-mode t)
 

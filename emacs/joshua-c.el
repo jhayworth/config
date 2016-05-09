@@ -7,8 +7,8 @@
                       indent-tabs-mode nil
                       c-basic-offset 4)
 
-	(when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
-	  (ggtags-mode 1))
+	;;(when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+	;;  (ggtags-mode 1))
 
         ;; turn on 'show matching parens'
         (show-paren-mode 1)
