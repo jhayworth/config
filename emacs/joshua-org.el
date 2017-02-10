@@ -11,9 +11,10 @@
        ;; These are for buffer-specific things.
        ;; In this setup, you want to enable flyspell-mode
        ;; and run org-reveal for every org buffer.
+       (visual-line-mode t)
        (flyspell-mode 1)
        (org-reveal)
-       )
+     )
 
      (add-hook 'org-mode-hook 'joshua-org-mode-hook)
   ))
