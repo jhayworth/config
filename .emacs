@@ -30,6 +30,8 @@
 (require 'ido)
 (ido-mode t)
 
+(require 'ispell)
+
 ;; My personal code
 (require 'joshua-org)
 (require 'joshua-c)
@@ -56,6 +58,11 @@
 (setq scroll-step 1
       scroll-conservatively 10000)
 
+;; Setup aspell
+(setq ispell-program-name "aspell")
+(setq ispell-personal-dictionary "~/.personaldictionary")
+(setq ispell-list-command "--list")
+
 ;; Custom Keybindings
 (global-set-key "\C-c\C-e" 'eval-expression)
 (global-set-key "\C-x\C-m" 'execute-extended-command)
@@ -65,9 +72,16 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
+;; Coding keybindings
 (global-set-key [f3] 'highlight-symbol-at-point)
 (global-set-key [(control f3)] 'highlight-symbol-query-replace)
 (global-set-key [f12] 'call-last-kbd-macro)
+
+;; Org-mode keybindings
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
 
 (delete-selection-mode t)
 
