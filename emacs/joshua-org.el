@@ -2,6 +2,9 @@
 
 (add-to-list 'auto-mode-alist '("\\.notes\\'" . org-mode))
 
+(setq org-agenda-files (list "~/org/work.org"
+			     "~/org/home.org"))
+
 (eval-after-load "org"
   '(progn
      (message "test from joshua-org")
