@@ -36,6 +36,7 @@
 (require 'joshua-org)
 (require 'joshua-c)
 (require 'joshua-java)
+(require 'joshua-js)
 
 ;; Shell mode
 (setq ansi-color-names-vector ; better contrast colors

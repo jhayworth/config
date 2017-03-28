@@ -2,6 +2,11 @@
 
 (add-hook 'c-mode-common-hook
     (lambda ()
+
+	;; Test message
+        (message "Joshua, you're c-mode code has run")
+
+
         ;; 4 space tabs, insert spaces
         (setq-default c-default-style "linux"
                       indent-tabs-mode nil
