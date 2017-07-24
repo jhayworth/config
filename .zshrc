@@ -12,6 +12,7 @@ alias l="ls -Afhl -g --color"
 alias e="emacs --no-window-system --quick"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias mm="make --file makefile"
+alias gclear='git checkout -- .'
 
 # Adding local bin directory to PATH for utilities
 export PATH=$PATH:$HOME/bin
