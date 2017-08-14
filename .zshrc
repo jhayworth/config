@@ -14,8 +14,10 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias mm="make --file makefile"
 
 # Git specific aliases
-alias gcl='git checkout -- .'
+alias gclear='git checkout -- .'
 alias gs='git status'
+alias gslamup='git push --force'
+alias gslamdown='git pull --force'
 
 # Adding local bin directory to PATH for utilities
 export PATH=$PATH:$HOME/bin
