@@ -1,2 +1,2 @@
 #!/bin/bash
-rsync -avz -e ssh --progress ~/Datastore/ git.hayworthsoftware.com:/opt/sync/personal
+rsync -avz -e ssh --progress /cygdrive/c/Datastore/notes git.hayworthsoftware.com:/opt/sync/personal/Notes.btis
