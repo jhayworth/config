@@ -5,6 +5,8 @@
 (setq org-agenda-files (list "~/org/work.org"
 			     "~/org/home.org"))
 
+(setq org-todo-keywords '((sequence "TODO" "|" "DOING" "|" "DONE")))
+
 (eval-after-load "org"
   '(progn
      (message "test from joshua-org")
