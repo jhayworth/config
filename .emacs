@@ -21,9 +21,8 @@
 (load-theme 'noctilux t)
 
 ;; Marmalade package management
-;;(require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-			 ("marmalade" . "http://marmalade-repo.org/packages/")
+;;			 ("marmalade" . "http://marmalade-repo.org/packages/") Taking this out for now as its being blocked by Baracuda
 			 ("melpa" . "http://melpa.milkbox.net/packages/")))
 (package-initialize)
 
@@ -93,7 +92,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(package-selected-packages
+   (quote
+    (minimap magit hydra highlight-symbol ggtags ess company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
