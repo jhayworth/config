@@ -17,7 +17,8 @@ alias mm="make --file makefile"
 alias gclear='git checkout -- .'
 alias gs='git status'
 alias gslamup='git push --force'
-alias gslamdown='git pull --force'
+alias grefreshbranches='git remote update origin --prune'
+alias gclean='git clean -x -d -ff'
 
 # Adding local bin directory to PATH for utilities
 export PATH=$PATH:$HOME/bin
