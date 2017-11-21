@@ -65,6 +65,7 @@
 (setq ispell-list-command "--list")
 
 ;; Custom Keybindings
+(global-set-key "\C-h" 'delete-backward-char)
 (global-set-key "\C-c\C-e" 'eval-expression)
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
@@ -84,6 +85,9 @@
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
+
+;; Magit keybindings
+(global-set-key (kbd "C-x g") 'magit-status)
 
 (delete-selection-mode t)
 
