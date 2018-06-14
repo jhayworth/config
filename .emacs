@@ -15,6 +15,7 @@
 
 ;; Source load path
 (add-to-list 'load-path (expand-file-name "~/emacs"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/yasnippet"))
 
 ;; Theme load path
 (add-to-list 'custom-theme-load-path "~/.emacs.d/color-themes")
@@ -26,17 +27,25 @@
 			 ("melpa" . "http://melpa.milkbox.net/packages/")))
 (package-initialize)
 
-(require 'ido)
-(ido-mode t)
-
-(require 'ispell)
-
 ;; My personal code
 (require 'joshua-org)
 (require 'joshua-c)
 (require 'joshua-java)
 (require 'joshua-js)
 (require 'joshua-eshell)
+
+;; Other packages
+(require 'ido)
+(ido-mode t)
+
+(require 'ispell)
+
+(require 'yasnippet)
+
+(yas-global-mode 1)
+
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"                 ;; personal snippets))
 
 ;; Shell mode
 (setq ansi-color-names-vector ; better contrast colors
@@ -98,7 +107,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (minimap magit hydra highlight-symbol ggtags ess company))))
+    (yasnippet minimap magit hydra highlight-symbol ggtags ess company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
