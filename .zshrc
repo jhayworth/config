@@ -12,7 +12,7 @@ alias l="ls -Afhl -g --color"
 alias e="emacs --no-window-system --quick"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias mm="make --file makefile"
-alias hist="history -i"
+alias hist="history -f"
 
 
 # Git specific aliases
