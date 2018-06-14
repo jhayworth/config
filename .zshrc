@@ -15,10 +15,10 @@ alias mm="make --file makefile"
 
 # Git specific aliases
 alias gclear='git checkout -- .'
+alias gcleanup='git clean -x -d -ff'
 alias gs='git status'
-alias gslamup='git push --force'
 alias grefreshbranches='git remote update origin --prune'
-alias gclean='git clean -x -d -ff'
+alias gmerge='git merge --no-ff'
 
 # Adding local bin directory to PATH for utilities
 export PATH=$PATH:$HOME/bin
@@ -48,16 +48,7 @@ source $ZSH/oh-my-zsh.sh
 # History settings
 export HISTSIZE=100000
 export SAVEHIST=100000
+export HISTTIMEFORMAT="%d/%m/%y %T "
 
 # Editor settings
 export EDITOR="emacs"
-
-# ssh-agent settings
-export SSHAGENT="/usr/bin/ssh-agent"
-export SSHAGENTARGS="-s"
-
-if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
-    echo "Initializing SSH agent..."
-    eval `$SSHAGENT $SSHAGENTARGS`
-    trap "kill $SSH_AGENT_PID" 0
-fi
