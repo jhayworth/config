@@ -12,6 +12,8 @@ alias l="ls -Afhl -g --color"
 alias e="emacs --no-window-system --quick"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias mm="make --file makefile"
+alias hist="history -i"
+
 
 # Git specific aliases
 alias gclear='git checkout -- .'
