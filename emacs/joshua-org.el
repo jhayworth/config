@@ -3,9 +3,13 @@
 ;; Settings
 (add-to-list 'auto-mode-alist '("\\.notes\\'" . org-mode))
 
+;; Agenda
 (setq org-agenda-files (list "~/org/work.org"
+			     "~/org/work_archive.org"
 			     "~/org/home.org"))
 (setq org-default-notes-file "~/org/notes.org")
+
+;; TODO
 (setq org-todo-keyword-faces '(
 			       ("TODO" . org-warning)
 			       ("NEXT" . (:foreground "yellow" :weight bold))
@@ -14,12 +18,20 @@
 			      ))
 (setq org-todo-keywords '((sequence "TODO(t)" "|" "NEXT(n)" "|" "WAITING(w)" "|" "DONE(d)")))
 (setq org-log-done 'time)
+(setq org-log-into-drawer t)
 
+;; Capture
 (setq org-capture-templates
  '(("t" "Todo" entry (file+headline "~/org/refile.org" "Tasks") "* TODO %?\n  %i\n  %a")
    ("j" "Journal" entry (file+headline "~/org/journal.org" "Today's Journal") "* \nEntered on %U\n  %i\n  %a\n%?")
    ("l" "Link" entry (file+headline "~/org/refile.org" "Collected Links") "* URL: %?")
    ))
+
+;; Refile
+(setq org-refile-targets
+      '(("work.org" :maxlevel . 1)
+        ("work_archive.org" :maxlevel . 1)))
+
 
 ;; Custom key definitions
 (define-key global-map "\C-cc" 'org-capture)
