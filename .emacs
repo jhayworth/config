@@ -1,4 +1,10 @@
-;; init.el --- Joshua's attempt at multi-platform emacs configuration
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq user-full-name "Joshua Hayworth")
 (setq user-mail-address "joshua@hayworthfamily.com")
 
@@ -16,16 +22,11 @@
 ;; Source load path
 (add-to-list 'load-path (expand-file-name "~/emacs"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/yasnippet"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/emacs_chrome"))
 
 ;; Theme load path
 (add-to-list 'custom-theme-load-path "~/.emacs.d/color-themes")
 (load-theme 'noctilux t)
-
-;; Marmalade package management
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-;;			 ("marmalade" . "http://marmalade-repo.org/packages/") Taking this out for now as its being blocked by Baracuda
-			 ("melpa" . "http://melpa.milkbox.net/packages/")))
-(package-initialize)
 
 ;; My personal code
 (require 'joshua-org)
@@ -40,12 +41,20 @@
 
 (require 'ispell)
 
+;; Yasnippet
 (require 'yasnippet)
 
 (yas-global-mode 1)
 
 (setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"                 ;; personal snippets))
+      '("~/.emacs.d/snippets"))                 ;; personal snippets
+
+;; Edit Server
+(require 'edit-server)
+(edit-server-start)
+
+;; Magit
+(require 'magit)
 
 ;; Shell mode
 (setq ansi-color-names-vector ; better contrast colors
@@ -88,6 +97,8 @@
 (global-set-key [f3] 'highlight-symbol-at-point)
 (global-set-key [(control f3)] 'highlight-symbol-query-replace)
 (global-set-key [f12] 'call-last-kbd-macro)
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
 ;; Org-mode keybindings
 (global-set-key "\C-cc" 'org-capture)
