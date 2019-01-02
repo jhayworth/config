@@ -1,3 +1,9 @@
+;; Package management
+(setq package-archives '(("melpa-stable" . "http://stable.melpa.org/packages/")
+                         ("melpa"        . "http://melpa.milkbox.net/packages/")
+                         ("marmalade"    . "http://marmalade-repo.org/packages/")
+		         ("org"          . "http://orgmode.org/elpa/")
+                         ("gnu"          . "http://elpa.gnu.org/packages/")))
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -34,6 +40,7 @@
 (require 'joshua-java)
 (require 'joshua-js)
 (require 'joshua-eshell)
+(require 'joshua-python)
 
 ;; Other packages
 (require 'ido)
