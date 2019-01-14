@@ -1,18 +1,19 @@
-;; Package management
-(setq package-archives '(("melpa-stable" . "http://stable.melpa.org/packages/")
-                         ("melpa"        . "http://melpa.milkbox.net/packages/")
-                         ("marmalade"    . "http://marmalade-repo.org/packages/")
-		         ("org"          . "http://orgmode.org/elpa/")
-                         ("gnu"          . "http://elpa.gnu.org/packages/")))
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 (setq user-full-name "Joshua Hayworth")
 (setq user-mail-address "joshua@hayworthfamily.com")
+
+;; Package management
+;;(require 'package)
+;;(setq package-archives '(("melpa-stable" . "http://stable.melpa.org/packages/")
+;;                         ("melpa"        . "http://melpa.milkbox.net/packages/")
+;;                         ("marmalade"    . "http://marmalade-repo.org/packages/")
+;;		         ("org"          . "http://orgmode.org/elpa/")
+;;                         ("gnu"          . "http://elpa.gnu.org/packages/")))
+;;(package-initialize)
+
+;; Server code
+(require 'server)
+(setq server-use-tcp t)
+(server-start)
 
 ;; No splash screen please or content in my scratch pad
 (setq initial-scratch-message "")
@@ -61,7 +62,7 @@
 (edit-server-start)
 
 ;; Magit
-(require 'magit)
+;; (require 'magit)
 
 ;; Shell mode
 (setq ansi-color-names-vector ; better contrast colors
