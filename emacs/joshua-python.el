@@ -1,8 +1,8 @@
 (provide 'joshua-python)
 
-(message "Joshua - You're python code is loading")
-(elpy-enable)
-(message "Joshua - You're python code has loaded")
+;;(message "Joshua - You're python code is loading")
+;;(elpy-enable)
+;;(message "Joshua - You're python code has loaded")
 
 (add-hook 'python-mode-hook
     (lambda ()

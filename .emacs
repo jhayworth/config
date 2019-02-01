@@ -36,6 +36,7 @@
 (load-theme 'noctilux t)
 
 ;; My personal code
+(require 'joshua-machinespecific)
 (require 'joshua-org)
 (require 'joshua-c)
 (require 'joshua-java)
