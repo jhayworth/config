@@ -10,7 +10,7 @@ ZSH=$HOME/.oh-my-zsh
 # Aliases
 alias l="ls -Afhl -g --color"
 alias e="emacs --no-window-system --quick"
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.personalconfig/ --work-tree=$HOME'
 alias mm="make --file makefile"
 alias hist="history -f"
 
