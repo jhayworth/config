@@ -2,13 +2,13 @@
 (setq user-mail-address "joshua@hayworthfamily.com")
 
 ;; Package management
-;;(require 'package)
-;;(setq package-archives '(("melpa-stable" . "http://stable.melpa.org/packages/")
-;;                         ("melpa"        . "http://melpa.milkbox.net/packages/")
-;;                         ("marmalade"    . "http://marmalade-repo.org/packages/")
-;;		         ("org"          . "http://orgmode.org/elpa/")
-;;                         ("gnu"          . "http://elpa.gnu.org/packages/")))
-;;(package-initialize)
+(require 'package)
+(setq package-archives '(("melpa-stable" . "http://stable.melpa.org/packages/")
+                         ("melpa"        . "http://melpa.milkbox.net/packages/")
+                         ("marmalade"    . "http://marmalade-repo.org/packages/")
+		         ("org"          . "http://orgmode.org/elpa/")
+                         ("gnu"          . "http://elpa.gnu.org/packages/")))
+(package-initialize)
 
 ;; Server code
 (require 'server)
@@ -41,7 +41,7 @@
 (require 'joshua-c)
 (require 'joshua-java)
 (require 'joshua-js)
-(require 'joshua-eshell)
+;;(require 'joshua-eshell)
 (require 'joshua-python)
 
 ;; Other packages
