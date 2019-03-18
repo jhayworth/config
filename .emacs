@@ -41,7 +41,7 @@
 (require 'joshua-c)
 (require 'joshua-java)
 (require 'joshua-js)
-(require 'joshua-eshell)
+;;(require 'joshua-eshell)
 (require 'joshua-python)
 
 ;; Other packages
