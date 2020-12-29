@@ -1,0 +1,23 @@
+ls
+cd Work
+ls
+cd Play
+ls
+python3 test.py
+?
+ls
+ls
+e test.py
+ls
+cd Work
+ls
+cd playground
+ls
+cd rust
+ls
+cd hello-joshua
+ls
+ll
+ls -alh
+cd src
+ls
