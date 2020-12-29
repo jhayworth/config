@@ -1,8 +1,14 @@
 (provide 'joshua-python)
 
-;;(message "Joshua - You're python code is loading")
-;;(elpy-enable)
-;;(message "Joshua - You're python code has loaded")
+(message "Joshua - You're python code is loading")
+(elpy-enable)
+
+(setq python-shell-interpreter "python3"
+      python-shell-interpreter-args "-i")
+
+(when (require 'flycheck nil t)
+    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+    (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 (add-hook 'python-mode-hook
     (lambda ()
