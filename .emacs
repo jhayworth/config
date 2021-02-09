@@ -4,13 +4,6 @@
 ;; Additions to load path
 (add-to-list 'load-path (expand-file-name "~/emacs"))
 
-(let ((default-directory  "/usr/share/emacs/site-lisp/elpa-src"))
-  (normal-top-level-add-subdirs-to-load-path))
-
-;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/yasnippet"))
-;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/emacs_chrome"))
-;;(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
-
 ;; Initialization code
 (require 'joshua-init)
 
@@ -30,13 +23,13 @@
 (require 'joshua-c)
 
 ;; Java Language specific configuration
-(require 'joshua-js)
+;; (require 'joshua-js)
 
 ;; Emacs shell specific configuration
-(require 'joshua-eshell)
+;; (require 'joshua-eshell)
 
 ;; Python specific configuration
-(require 'joshua-python)
+;; (require 'joshua-python)
 
 ;; Other packages
 (require 'ido)
@@ -45,19 +38,19 @@
 (require 'ispell)
 
 ;; Yasnippet
-(require 'yasnippet)
+;; (require 'yasnippet)
 
-(yas-global-mode 1)
+;; (yas-global-mode 1)
 
-(setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"))                 ;; personal snippets
+;;(setq yas-snippet-dirs
+;;      '("~/.emacs.d/snippets"))                 ;; personal snippets
 
 ;; Edit Server
 ;;(require 'edit-server)
 ;;(edit-server-start)
 
 ;; Magit
-(require 'magit)
+;; (require 'magit)
 
 ;; Shell mode
 (setq ansi-color-names-vector ; better contrast colors
@@ -70,9 +63,9 @@
 ;;(setq comint-prompt-read-only t)
 
 ;; Setup aspell
-(setq ispell-program-name "aspell")
-(setq ispell-personal-dictionary "~/.personaldictionary")
-(setq ispell-list-command "--list")
+;; (setq ispell-program-name "aspell")
+;; (setq ispell-personal-dictionary "~/.personaldictionary")
+;; (setq ispell-list-command "--list")
 
 ;; Custom Keybindings
 (global-set-key [C-mouse-4] 'text-scale-increase)
@@ -92,8 +85,8 @@
 (global-set-key (kbd "C-S-d") 'duplicate-line)
 (global-set-key (kbd "C-S-j") 'move-line-down)
 (global-set-key (kbd "C-S-k") 'move-line-up)
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+;;(global-set-key (kbd "C-x g") 'magit-status)
+;;(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
 ;;(custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -110,17 +103,17 @@
  ;; If there is more than one, they won't work right.
 ;; '(default ((t (:inherit nil :stipple nil :background "#202020" :foreground "#cccccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "outline" :family "Fira Mono"))))
 ;; '(which-func ((t (:foreground "light gray")))))
-(custom-set-variables
+;;(custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (yasnippet minimap magit hydra highlight-symbol ggtags ess company))))
-(custom-set-faces
+;; '(package-selected-packages
+;;   (quote
+;;    (yasnippet minimap magit hydra highlight-symbol ggtags ess company))))
+;;(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+;; )
