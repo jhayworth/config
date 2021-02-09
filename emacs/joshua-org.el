@@ -1,8 +1,8 @@
 (provide 'joshua-org)
 
 ;; Other libraries
-;; (require 'org-journal)
-;; (require 'org-roam)
+(require 'org-journal)
+(require 'org-roam)
 
 ;; Settings
 (add-to-list 'auto-mode-alist '("\\.notes\\'" . org-mode))
