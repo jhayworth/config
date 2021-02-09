@@ -12,7 +12,7 @@
 
 (setq package-archives '(("melpa-stable" . "http://stable.melpa.org/packages/")
                          ("melpa"        . "http://melpa.milkbox.net/packages/")
-		         ("org"          . "http://orgmode.org/elpa/")
+		         ("org"          . "https://orgmode.org/elpa/")
                          ("gnu"          . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
