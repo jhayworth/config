@@ -23,7 +23,7 @@ alias grefreshbranches='git remote update origin --prune'
 alias gmerge='git merge --no-ff'
 
 # Adding local bin directory to PATH for utilities
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:/usr/local/bin:$HOME/bin:$HOME/Work/flutter/bin
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
