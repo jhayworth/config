@@ -4,7 +4,7 @@ ZSH=$HOME/.oh-my-zsh
 # Path to current version of Swift
 SWIFT=/home/joshua/Work/swift/swift-5.3.3-RELEASE-ubuntu20.04
 ANDROID_PLATFORM=/home/joshua/Android/Sdk/platform-tools
-
+FLUTTER=$HOME/Work/flutter/bin
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -14,7 +14,7 @@ ZSH_THEME="aussiegeek"
 # Aliases
 alias l="ls -Afhl -g --color"
 alias e="emacs --no-window-system --quick"
-alias config='/usr/bin/git --git-dir=$HOME/.personalconfig/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias mm="make --file makefile"
 alias hist="history -f"
 
@@ -27,7 +27,7 @@ alias grefreshbranches='git remote update origin --prune'
 alias gmerge='git merge --no-ff'
 
 # Adding local bin directory to PATH for utilities
-export PATH=$PATH:$HOME/bin:$SWIFT/usr/bin:$ANDROID_PLATFORM
+export PATH=$PATH:/usr/local/bin:$HOME/bin:$SWIFT/usr/bin:$ANDROID_PLATFORM:$FLUTTER
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -57,4 +57,4 @@ export SAVEHIST=100000
 export HISTTIMEFORMAT="%d/%m/%y %T "
 
 # Editor settings
-export EDITOR="emacsclient -create-frame"
+export EDITOR="/Applications/Emacs.app/Contents/MacOS/Emacs"
