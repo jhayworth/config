@@ -7,6 +7,9 @@
 ;; Initialization code
 (require 'joshua-init)
 
+;; Machine specific configuration
+(require 'joshua-machinespecific)
+
 ;; General UI Startup
 (require 'joshua-ui)
 
