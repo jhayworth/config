@@ -38,6 +38,19 @@
    ("l" "Link" entry (file+headline "~/Datastore/org/refile.org" "Collected Links") "* URL: %?")
    ))
 
+;; Structure Templates
+(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("sh" . "src bash"))
+(add-to-list 'org-structure-template-alist '("py" . "src python"))
+
+;; Org babel langugaes
+;; https://stackoverflow.com/questions/29163164/how-can-i-load-bash-as-opposed-to-sh-in-org-babel-to-enable-begin-src-bash
+(org-babel-do-load-languages 'org-babel-load-languages
+    '(
+        (shell . t)
+    )
+)
+
 ;; Refile
 (setq org-refile-targets
       '(("work.org" :maxlevel . 1)
