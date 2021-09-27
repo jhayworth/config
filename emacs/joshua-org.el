@@ -16,7 +16,9 @@
 (setq org-default-notes-file "~/Datastore/org/notes.org")
 
 ;; Journal
-(setq org-journal-dir "~/Datastore/org/@journal/")
+(setq org-journal-dir "~/Datastore/org-journal-personal/")
+
+(setq org-journal-template-endofdaytasks "~/emacs/org-endofday-checklist.org")
 
 ;; TODO
 (setq org-todo-keyword-faces '(
