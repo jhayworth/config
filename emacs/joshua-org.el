@@ -71,6 +71,7 @@
 (global-unset-key (kbd "C-o"))
 (global-set-key (kbd "C-o c") 'org-capture)
 (global-set-key (kbd "C-o a") 'org-agenda)
+(global-set-key (kbd "C-o l") 'org-toggle-link-display)
 
 ;; Org-roam keys
 (global-set-key (kbd "C-o r l") 'org-roam)
