@@ -3,6 +3,7 @@
 ;; Other libraries
 (require 'org-journal)
 (require 'org-roam)
+(require 'deft)
 
 ;; Settings
 (add-to-list 'auto-mode-alist '("\\.notes\\'" . org-mode))
@@ -45,6 +46,12 @@
 (setq org-roam-index-file "~/Datastore/org/org-roam/20201120145954-index.org")
 (add-hook 'after-init-hook 'org-roam-mode)
 
+;; Deft
+(setq deft-recursive t)
+(setq deft-use-filter-string-for-filename t)
+(setq deft-default-extension "org")
+(setq deft-directory "~/Datastore/org")
+
 ;; Custom key definitions
 (global-unset-key (kbd "C-o"))
 (global-set-key (kbd "C-o c") 'org-capture)
@@ -55,6 +62,9 @@
 (global-set-key (kbd "C-o r f") 'org-roam-find-file)
 (global-set-key (kbd "C-o r i") 'org-roam-insert)
 (global-set-key (kbd "C-o r g") 'org-roam-graph-show)
+
+;; Deft keys
+(global-set-key (kbd "C-o d") 'deft)
 
 ;; Post-load hook
 (eval-after-load "org"
@@ -67,4 +77,28 @@
      )
 
      (add-hook 'org-mode-hook 'joshua-org-mode-hook)
-  ))
+))
+
+;; Journal template functions
+(defun joshua-org-journal-endofday-checklist ()
+  "Insert the end of day task list"
+  (interactive)
+  (insert-file-contents org-journal-template-endofdaytasks)
+)
+
+;; ***************************************************
+;; Misc functions that exist for creature comforts
+;; ***************************************************
+
+;; I got this one from here: https://emacs.stackexchange.com/questions/5387/show-org-mode-hyperlink-as-plain-text
+(defun org-toggle-link-display ()
+  "Toggle the literal or descriptive display of links."
+  (interactive)
+  (if org-descriptive-links
+      (progn (org-remove-from-invisibility-spec '(org-link))
+         (org-restart-font-lock)
+         (setq org-descriptive-links nil))
+    (progn (add-to-invisibility-spec '(org-link))
+       (org-restart-font-lock)
+       (setq org-descriptive-links t))))
+
