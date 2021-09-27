@@ -1,4 +1,3 @@
 ac-comphist.dat
 .cfg
-.emacs.d/plugins
-.emacs.d/elpa
+.emacs.d
