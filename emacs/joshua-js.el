@@ -1,5 +1,3 @@
-(provide 'joshua-js)
-
 ;; Associate files with js-mode
 (add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
 
@@ -17,3 +15,5 @@
 	    (linum-mode t)
 	  )
 )
+
+(provide 'joshua-js)
