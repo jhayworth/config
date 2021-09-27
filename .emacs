@@ -35,8 +35,8 @@
 ;; (require 'joshua-python)
 
 ;; Other packages
-(require 'ido)
-(ido-mode t)
+(require 'ivy)
+(ivy-mode 1)
 
 (require 'ispell)
 
@@ -53,7 +53,10 @@
 ;;(edit-server-start)
 
 ;; Magit
-;; (require 'magit)
+(require 'magit)
+
+;; lsp mode
+(require 'lsp-mode)
 
 ;; Shell mode
 (setq ansi-color-names-vector ; better contrast colors
