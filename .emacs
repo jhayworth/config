@@ -4,9 +4,6 @@
 ;; Additions to load path
 (add-to-list 'load-path (expand-file-name "~/emacs"))
 
-;; Initialization code
-(require 'joshua-init)
-
 ;; Machine specific configuration
 (require 'joshua-machinespecific)
 
