@@ -1,4 +1,4 @@
-(setq custom-theme-directory "~/emacs/themes")
+;; (setq custom-theme-directory "~/emacs/themes")
 
 ;; No splash screen please or content in my scratch pad
 (setq initial-scratch-message "")
