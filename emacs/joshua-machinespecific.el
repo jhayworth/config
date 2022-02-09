@@ -1,5 +1,3 @@
-(provide 'joshua-machinespecific)
-
 (message "Joshua - You're machine specific code is loading")
 
 (when (string= system-name "whiskey-guardian")
@@ -8,4 +6,4 @@
 	(normal-top-level-add-subdirs-to-load-path))
 )
 
-
+(provide 'joshua-machinespecific)

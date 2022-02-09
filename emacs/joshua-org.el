@@ -1,6 +1,20 @@
-(provide 'joshua-org)
+(message "Joshua - You're org code is loading")
 
-;; Other libraries
+;; Adjust the load path
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/websocket"))    ;; Websocket library (https://github.com/ahyatt/emacs-websocket)
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/simple-httpd")) ;; Simple web server
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/org/lisp"))     ;; Add org-core
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/org-journal"))  ;; Add org-journal
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/emacsql"))      ;; Add emacsql (A dependency of org-roam among other things)
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/org-roam"))     ;; Add org-roam
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/org-roam-ui"))  ;; Add org-roam-ui (https://github.com/org-roam/org-roam-ui)
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/deft"))         ;; Add deft
+
+;; Pre-load settings
+(setq org-roam-v2-ack t)
+
+;; library require section
+(require 'org)
 (require 'org-journal)
 (require 'org-roam)
 (require 'deft)
@@ -59,7 +73,10 @@
 ;; Roam
 (setq org-roam-directory "~/Datastore/org/org-roam")
 (setq org-roam-index-file "~/Datastore/org/org-roam/20201120145954-index.org")
-(add-hook 'after-init-hook 'org-roam-mode)
+(org-roam-db-autosync-mode)
+
+;; Roam UI
+(load-library "org-roam-ui")
 
 ;; Deft
 (setq deft-recursive t)
@@ -74,10 +91,13 @@
 (global-set-key (kbd "C-o l") 'org-toggle-link-display)
 
 ;; Org-roam keys
-(global-set-key (kbd "C-o r l") 'org-roam)
-(global-set-key (kbd "C-o r f") 'org-roam-find-file)
-(global-set-key (kbd "C-o r i") 'org-roam-insert)
-(global-set-key (kbd "C-o r g") 'org-roam-graph-show)
+(global-set-key (kbd "C-o r f") 'org-roam-node-find)
+(global-set-key (kbd "C-o r i") 'org-roam-node-insert)
+(global-set-key (kbd "C-o r c") 'org-roam-capture)
+(global-set-key (kbd "C-o r t") 'org-roam-buffer-toggle)
+
+;; Org-roam UI keys
+(global-set-key (kbd "C-o r u") 'org-roam-ui-mode)
 
 ;; Deft keys
 (global-set-key (kbd "C-o d") 'deft)
@@ -118,3 +138,4 @@
        (org-restart-font-lock)
        (setq org-descriptive-links t))))
 
+(provide 'joshua-org)

@@ -16,7 +16,7 @@
 (global-set-key [mouse-5] 'scroll-up-line)
 (xterm-mouse-mode 1)
 
-;;(load-theme 'ayu-grey t)
+;; (load-theme 'ayu-grey t)
 
 (blink-cursor-mode 0)
 (setq-default cursor-type 'bar)

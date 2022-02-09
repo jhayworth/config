@@ -1,42 +1,49 @@
-(provide 'joshua-c)
+(message "Joshua - You're c-mode code is loading")
+
+;; Adjust the load path
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/emacs-ccls"))    ;; Emacs portion of ccls support (C/C++ LSP server)
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/helm-lsp"))      ;; LSP helm integration
+
+;; Library require section
+(require 'ccls)
+(require 'magit)
+(require 'company)
+(require 'lsp-mode)
+(require 'helm-lsp)
+
+;; Settings
+(setq ccls-executable "/usr/local/bin/ccls")
+
+;; Post-load hooks
+(add-hook 'c-mode-hook 'lsp)
+(add-hook 'c++-mode-hook 'lsp)
+
+(setq gc-cons-threshold (* 100 1024 1024)
+      read-process-output-max (* 1024 1024)
+      company-idle-delay 0.0
+      company-minimum-prefix-length 1
+      lsp-idle-delay 0.1)
 
 (add-hook 'c-mode-common-hook
     (lambda ()
-
 	;; Test message
-        (message "Joshua, you're c-mode code has run")
-
+        (message "Joshua, you're c-mode hook code has run")
 
         ;; 4 space tabs, insert spaces
         (setq-default c-default-style "linux"
                       indent-tabs-mode nil
                       c-basic-offset 4)
 
-	;;(when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
-	;;  (ggtags-mode 1))
-
         ;; turn on 'show matching parens'
         (show-paren-mode 1)
 
         ;; turn on line numbers
         (linum-mode t)
-
-        ;; turn on irony mode
-        ;;(irony-mode t)
-
-        ;; Show the current function
-        (which-function-mode t)
-
-        (custom-set-variables
-         ;; custom-set-variables was added by Custom.
-         ;; If you edit it by hand, you could mess it up, so be careful.
-         ;; Your init file should contain only one such instance.
-         ;; If there is more than one, they won't work right.
-        )
-        (custom-set-faces
-         ;; custom-set-faces was added by Custom.
-         ;; If you edit it by hand, you could mess it up, so be careful.
-         ;; Your init file should contain only one such instance.
-         ;; If there is more than one, they won't work right.
-         '(which-func ((t (:foreground "light gray")))))
 ))
+
+;; Keybindings
+(define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol)
+
+(message "Joshua, you're c-mode code has been run")
+
+(provide 'joshua-c)
