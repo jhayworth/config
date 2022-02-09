@@ -92,8 +92,8 @@
 (global-set-key (kbd "C-S-d") 'duplicate-line)
 (global-set-key (kbd "C-S-j") 'move-line-down)
 (global-set-key (kbd "C-S-k") 'move-line-up)
-;; (global-set-key (kbd "C-x g") 'magit-status)
-;; (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
 (defhydra hydra-buffer-menu (:color pink
                              :hint nil)
@@ -134,6 +134,9 @@ _~_: modified
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(sanityinc-tomorrow-night))
+ '(custom-safe-themes
+   '("06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" default))
  '(package-selected-packages
    '(transient git-commit find-file-in-project f dockerfile-mode debbugs)))
 (custom-set-faces

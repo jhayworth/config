@@ -1,4 +1,8 @@
-;; (setq custom-theme-directory "~/emacs/themes")
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/themes/sanityinc-tomorrow")) ;; Theme!
+
+(setq custom-theme-directory "~/Work/Emacs-libraries/themes/")
+
+(require 'color-theme-sanityinc-tomorrow)
 
 ;; No splash screen please or content in my scratch pad
 (setq initial-scratch-message "")
