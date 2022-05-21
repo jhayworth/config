@@ -74,6 +74,8 @@
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 
 ;; Other custom nonsense
+(global-set-key "\C-x\C-m" 'helm-M-x)
+(global-set-key "\C-c\C-m" 'helm-M-x)
 (global-set-key [C-mouse-4] 'text-scale-increase)
 (global-set-key [C-mouse-5] 'text-scale-decrease)
 (global-set-key "\C-x\C-b" 'buffer-menu)
@@ -86,8 +88,8 @@
 (global-set-key [f2] 'speedbar)
 (global-set-key [f3] 'highlight-symbol-at-point)
 (global-set-key [(control f3)] 'highlight-symbol-query-replace)
+(global-set-key [f4] 'whitespace-mode)
 (global-set-key [f5] 'compile)
-(global-set-key [f6] 'whitespace-mode)
 (global-set-key [f12] 'call-last-kbd-macro)
 (global-set-key (kbd "C-S-d") 'duplicate-line)
 (global-set-key (kbd "C-S-j") 'move-line-down)
