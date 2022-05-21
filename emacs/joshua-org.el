@@ -10,6 +10,8 @@
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/org-roam-ui"))  ;; Add org-roam-ui (https://github.com/org-roam/org-roam-ui)
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/deft"))         ;; Add deft
 
+(message "Joshua - Org load path modifications complete")
+
 ;; Pre-load settings
 (setq org-roam-v2-ack t)
 
@@ -73,7 +75,15 @@
 ;; Roam
 (setq org-roam-directory "~/Datastore/org/org-roam")
 (setq org-roam-index-file "~/Datastore/org/org-roam/20201120145954-index.org")
+(setq org-roam-dailies-directory "daily/")
+(setq org-roam-dailies-capture-templates
+      '(("d" "default" entry
+         "* %?"
+         :target (file+head "%<%Y-%m-%d>.org"
+                            "#+title: %<%Y-%m-%d>\n"))))
+
 (org-roam-db-autosync-mode)
+
 
 ;; Roam UI
 (load-library "org-roam-ui")
