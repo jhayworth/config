@@ -33,7 +33,6 @@
 
 ;; Journal
 (setq org-journal-dir "~/Datastore/org-journal-personal/")
-
 (setq org-journal-template-endofdaytasks "~/emacs/org-endofday-checklist.org")
 
 ;; TODO
@@ -89,10 +88,11 @@
 (load-library "org-roam-ui")
 
 ;; Deft
+(setq deft-directory "~/Datastore/org")
 (setq deft-recursive t)
 (setq deft-use-filter-string-for-filename t)
+(setq deft-strip-summary-regexp ":PROPERTIES:\n\\(.+\n\\)+:END:\n")
 (setq deft-default-extension "org")
-(setq deft-directory "~/Datastore/org")
 
 ;; Custom key definitions
 (global-unset-key (kbd "C-o"))
