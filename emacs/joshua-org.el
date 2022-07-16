@@ -93,6 +93,7 @@
 (setq deft-use-filter-string-for-filename t)
 (setq deft-strip-summary-regexp ":PROPERTIES:\n\\(.+\n\\)+:END:\n")
 (setq deft-default-extension "org")
+(setq deft-use-filename-as-title t)
 
 ;; Custom key definitions
 (global-unset-key (kbd "C-o"))
