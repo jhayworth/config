@@ -1,3 +1,6 @@
+;; Emacs server
+(server-start)
+
 (setq user-full-name "Joshua Hayworth")
 (setq user-mail-address "joshua@hayworthfamily.com")
 
