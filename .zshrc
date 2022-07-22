@@ -43,3 +43,8 @@ source $ZSH/oh-my-zsh.sh
 export HISTSIZE=100000
 export SAVEHIST=100000
 export HISTTIMEFORMAT="%d/%m/%y %T "
+
+# Assigning Emacs as our editor of choice
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
+export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode
