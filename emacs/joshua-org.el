@@ -17,6 +17,7 @@
 
 ;; library require section
 (require 'org)
+(require 'org-protocol)
 (require 'org-journal)
 (require 'org-roam)
 (require 'deft)
@@ -47,11 +48,25 @@
 (setq org-log-into-drawer t)
 
 ;; Capture
+(defconst my/captured-notes-file "~/Datastore/org/NotesInbox.org")
+(defconst my/browser-bookmarks-file "~/Datastore/org/refile.org")
+
 (setq org-capture-templates
  '(("t" "Todo" entry (file+headline "~/Datastore/org/refile.org" "Tasks") "* TODO %?\n  %i\n  %a")
    ("j" "Journal" entry (file+headline "~/Datastore/org/journal.org" "Today's Journal") "* \nEntered on %U\n  %i\n  %a\n%?")
    ("l" "Link" entry (file+headline "~/Datastore/org/refile.org" "Collected Links") "* URL: %?")
+   ("Pn" "(Protocol quote)" entry (file+headline my/captured-notes-file "Notes from the web")
+         "* %:description\nCaptured at %u\n%c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n%?")
+   ("Pb" "(Protocol bookmark)" entry (file+datetree my/browser-bookmarks-file)
+         "* %:description \nCaptured at %U\n[[%:link][%:description]]\n%?\n")
    ))
+
+(defun my-org-protocol-store-link-advice (orig &rest args)
+  (raise-frame)
+  (apply orig args))
+
+(advice-add 'org-protocol-store-link :around
+            #'my-org-protocol-store-link-advice)
 
 ;; Structure Templates
 (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
