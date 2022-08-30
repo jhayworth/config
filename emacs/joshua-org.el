@@ -34,7 +34,18 @@
 
 ;; Journal
 (setq org-journal-dir "~/Datastore/org-journal-personal/")
-(setq org-journal-template-endofdaytasks "~/emacs/org-endofday-checklist.org")
+(setq org-journal-carryover-items "")
+
+(defun joshua/new-journal-buffer ()
+  (not (file-exists-p (buffer-file-name))))
+
+(defun joshua/insert-journal-template ()
+  (let ((template-file (expand-file-name "template.org" org-journal-dir)))
+    (when (joshua/new-journal-buffer)
+      (save-excursion
+        (insert-file-contents template-file)))))
+
+(add-hook 'org-journal-after-entry-create-hook #'joshua/insert-journal-template)
 
 ;; TODO
 (setq org-todo-keyword-faces '(
