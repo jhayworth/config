@@ -1,13 +1,17 @@
 (message "Joshua - You're org code is loading")
 
 ;; Adjust the load path
+;; Dependencies
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/websocket"))    ;; Websocket library (https://github.com/ahyatt/emacs-websocket)
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/simple-httpd")) ;; Simple web server
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/emacsql"))      ;; Add emacsql (A dependency of org-roam among other things)
+
+;; Core libraries
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/org/lisp"))     ;; Add org-core
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/org-journal"))  ;; Add org-journal
-(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/emacsql"))      ;; Add emacsql (A dependency of org-roam among other things)
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/org-roam"))     ;; Add org-roam
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/org-roam-ui"))  ;; Add org-roam-ui (https://github.com/org-roam/org-roam-ui)
+
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/deft"))         ;; Add deft
 
 (message "Joshua - Org load path modifications complete")
