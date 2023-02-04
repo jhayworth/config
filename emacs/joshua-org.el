@@ -32,7 +32,8 @@
 ;; Agenda
 (setq org-agenda-files (list "~/Datastore/org/work.org"
 			     "~/Datastore/org/work_archive.org"
-			     "~/Datastore/org/home.org"))
+			     "~/Datastore/org/home.org"
+			     "~/Datastore/org/home_archive.org"))
 
 (setq org-default-notes-file "~/Datastore/org/notes.org")
 
