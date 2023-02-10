@@ -105,12 +105,6 @@
 ;; Roam
 (setq org-roam-directory "~/Datastore/org/org-roam")
 (setq org-roam-index-file "~/Datastore/org/org-roam/20201120145954-index.org")
-(setq org-roam-dailies-directory "daily/")
-(setq org-roam-dailies-capture-templates
-      '(("d" "default" entry
-         "* %?"
-         :target (file+head "%<%Y-%m-%d>.org"
-                            "#+title: %<%Y-%m-%d>\n"))))
 
 (org-roam-db-autosync-mode)
 
