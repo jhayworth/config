@@ -32,8 +32,8 @@
 (require 'joshua-ui)                ;; General UI Startup
 (require 'joshua-general)           ;; Personal Utility functions
 (require 'joshua-org)               ;; Org mode specific configuration
-;; (require 'joshua-mail)              ;; E-mail configuration
-(require 'joshua-c)                 ;; C Language specific configuration
+(require 'joshua-mail)              ;; E-mail configuration
+;; (require 'joshua-c)                 ;; C Language specific configuration
 ;; (require 'joshua-js)                ;; Java Language specific configuration
 ;; (require 'joshua-eshell)            ;; Emacs shell specific configuration
 ;; (require 'joshua-python)            ;; Python specific configuration
