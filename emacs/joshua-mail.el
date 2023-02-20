@@ -15,16 +15,14 @@
 
 ;; below are the defaults; if they do not exist yet, mu4e offers to
 ;; create them. they can also functions; see their docstrings.
+(setq user-mail-address "joshua@scriptablecamera.com")
 (setq mu4e-sent-folder   "/sent")
 (setq mu4e-drafts-folder "/drafts")
 (setq mu4e-trash-folder  "/trash")
 
-;; smtp mail setting; these are the same that `gnus' uses.
-(setq
-   message-send-mail-function   'smtpmail-send-it
-   smtpmail-default-smtp-server "127.0.0.1"
-   smtpmail-smtp-server         "127.0.0.1"
-   smtpmail-local-domain        "scriptablecamera.com")
+;;send mail using postfix
+(setq send-mail-function 'sendmail-send-it)
+(setq message-send-mail-function 'message-send-mail-with-sendmail)
 
 ;; the maildirs you use frequently; access them with 'j' ('jump')
 (setq   mu4e-maildir-shortcuts
@@ -34,6 +32,11 @@
       (:maildir "/sent"    :key ?s)))
 
 ;; don't keep message buffers around
-;; (setq message-kill-buffer-on-exit t)
+(setq message-kill-buffer-on-exit t)
+
+;; Prefer text version of messages
+(with-eval-after-load "mm-decode"
+  (add-to-list 'mm-discouraged-alternatives "text/html")
+  (add-to-list 'mm-discouraged-alternatives "text/richtext"))
 
 (provide 'joshua-mail)
