@@ -1,21 +1,23 @@
 ;; Emacs server
-;; (server-start)
+;; https://www.emacswiki.org/emacs/EmacsAsDaemon
+(server-start)
 
 (setq user-full-name "Joshua Hayworth")
 (setq user-mail-address "joshua@hayworthfamily.com")
 
 ;; Additions to load path
 (add-to-list 'load-path (expand-file-name "~/emacs"))
-(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/hydra"))       ;; Add hydra
-(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/emacs-async")) ;; Async (dependency of helm) - https://github.com/jwiegley/emacs-async
-(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/popup"))       ;; popup.el (depnedency of helm) - https://github.com/auto-complete/popup-el
+(add-to-list 'load-path (expand-file-name "/usr/local/share/emacs/site-lisp/emacs-async/")) ;; Async (dependency of helm) - https://github.com/jwiegley/emacs-async
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/popup"))                  ;; popup.el (depnedency of helm) - https://github.com/auto-complete/popup-el
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/helm"))
+;;(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/hydra"))       ;; Add hydra
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/dash"))                   ;; Dash (dependency of org-mode) - https://github.com/magnars/dash.el
 
 ;; Async
 (autoload 'dired-async-mode "dired-async.el" nil t)
 (dired-async-mode 1)
 
 ;; Helm
-;; This is loaded automatically from /usr/local/share/emacs/site-lisp/helm
 (require 'helm)
 (require 'helm-config)
 
@@ -23,21 +25,25 @@
 (require 'ispell)
 
 ;; Hydra mode
-(require 'hydra)
+;;(require 'hydra)
 
 ;; Yasnippet
 ;; (require 'yasnippet)
 
+;; Magit
+(require 'magit)
+
+(require 'joshua-init)
 (require 'joshua-machinespecific)   ;; Machine specific configuration
 (require 'joshua-ui)                ;; General UI Startup
 (require 'joshua-general)           ;; Personal Utility functions
+(require 'joshua-c)                 ;; C Language specific configuration
 (require 'joshua-org)               ;; Org mode specific configuration
 (require 'joshua-mail)              ;; E-mail configuration
-;; (require 'joshua-c)                 ;; C Language specific configuration
 ;; (require 'joshua-js)                ;; Java Language specific configuration
 ;; (require 'joshua-eshell)            ;; Emacs shell specific configuration
 ;; (require 'joshua-python)            ;; Python specific configuration
-(require 'joshua-projects)          ;; Project specific initialization
+;; (require 'joshua-projects)          ;; Project specific initialization
 
 ;; Yas snippets
 ;; (yas-global-mode 1)
@@ -46,23 +52,23 @@
 ;;      '("~/.emacs.d/snippets"))                 ;; personal snippets
 
 ;; Edit Server
-;;(require 'edit-server)
-;;(edit-server-start)
+(require 'edit-server)
+(edit-server-start)
 
 ;; Shell mode
 (setq ansi-color-names-vector ; better contrast colors
       ["black" "red4" "green4" "yellow4"
        "blue3" "magenta4" "cyan4" "white"])
 
-;;(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-;;(add-hook 'shell-mode-hook
-;;     '(lambda () (toggle-truncate-lines 1)))
-;;(setq comint-prompt-read-only t)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(add-hook 'shell-mode-hook
+     '(lambda () (toggle-truncate-lines 1)))
+(setq comint-prompt-read-only t)
 
 ;; Setup aspell
-;; (setq ispell-program-name "aspell")
-;; (setq ispell-personal-dictionary "~/.personaldictionary")
-;; (setq ispell-list-command "--list")
+(setq ispell-program-name "aspell")
+(setq ispell-personal-dictionary "~/.personaldictionary")
+(setq ispell-list-command "--list")
 
 ;; Helm
 (setq helm-autoresize-max-height 0)
@@ -97,40 +103,40 @@
 (global-set-key (kbd "C-S-d") 'duplicate-line)
 (global-set-key (kbd "C-S-j") 'move-line-down)
 (global-set-key (kbd "C-S-k") 'move-line-up)
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+;;(global-set-key (kbd "C-x g") 'magit-status)
+;;(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
-(defhydra hydra-buffer-menu (:color pink
-                             :hint nil)
-  "
-^Mark^             ^Unmark^           ^Actions^          ^Search
-^^^^^^^^-----------------------------------------------------------------
-_m_: mark          _u_: unmark        _x_: execute       _R_: re-isearch
-_s_: save          _U_: unmark up     _b_: bury          _I_: isearch
-_d_: delete        ^ ^                _g_: refresh       _O_: multi-occur
-_D_: delete up     ^ ^                _T_: files only: % -28`Buffer-menu-files-only
-_~_: modified
-"
-  ("m" Buffer-menu-mark)
-  ("u" Buffer-menu-unmark)
-  ("U" Buffer-menu-backup-unmark)
-  ("d" Buffer-menu-delete)
-  ("D" Buffer-menu-delete-backwards)
-  ("s" Buffer-menu-save)
-  ("~" Buffer-menu-not-modified)
-  ("x" Buffer-menu-execute)
-  ("b" Buffer-menu-bury)
-  ("g" revert-buffer)
-  ("T" Buffer-menu-toggle-files-only)
-  ("O" Buffer-menu-multi-occur :color blue)
-  ("I" Buffer-menu-isearch-buffers :color blue)
-  ("R" Buffer-menu-isearch-buffers-regexp :color blue)
-  ("c" nil "cancel")
-  ("v" Buffer-menu-select "select" :color blue)
-  ("o" Buffer-menu-other-window "other-window" :color blue)
-  ("q" quit-window "quit" :color blue))
-
-(define-key Buffer-menu-mode-map "." 'hydra-buffer-menu/body)
+;;(defhydra hydra-buffer-menu (:color pink
+;;                             :hint nil)
+;;  "
+;;^Mark^             ^Unmark^           ^Actions^          ^Search
+;;^^^^^^^^-----------------------------------------------------------------
+;;_m_: mark          _u_: unmark        _x_: execute       _R_: re-isearch
+;;_s_: save          _U_: unmark up     _b_: bury          _I_: isearch
+;;_d_: delete        ^ ^                _g_: refresh       _O_: multi-occur
+;;_D_: delete up     ^ ^                _T_: files only: % -28`Buffer-menu-files-only
+;;_~_: modified
+;;"
+;;  ("m" Buffer-menu-mark)
+;;  ("u" Buffer-menu-unmark)
+;;  ("U" Buffer-menu-backup-unmark)
+;;  ("d" Buffer-menu-delete)
+;;  ("D" Buffer-menu-delete-backwards)
+;;  ("s" Buffer-menu-save)
+;;  ("~" Buffer-menu-not-modified)
+;;  ("x" Buffer-menu-execute)
+;;  ("b" Buffer-menu-bury)
+;;  ("g" revert-buffer)
+;;  ("T" Buffer-menu-toggle-files-only)
+;;  ("O" Buffer-menu-multi-occur :color blue)
+;;  ("I" Buffer-menu-isearch-buffers :color blue)
+;;  ("R" Buffer-menu-isearch-buffers-regexp :color blue)
+;;  ("c" nil "cancel")
+;;  ("v" Buffer-menu-select "select" :color blue)
+;;  ("o" Buffer-menu-other-window "other-window" :color blue)
+;;  ("q" quit-window "quit" :color blue))
+;;
+;;(define-key Buffer-menu-mode-map "." 'hydra-buffer-menu/body)
 
 
 (setq smerge-command-prefix "\C-c v")
@@ -143,7 +149,7 @@ _~_: modified
  '(custom-safe-themes
    '("06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" default))
  '(package-selected-packages
-   '(transient git-commit find-file-in-project f dockerfile-mode debbugs)))
+   '(edit-server emacsql-sqlite pg transient git-commit find-file-in-project f dockerfile-mode debbugs)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
