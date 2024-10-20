@@ -42,6 +42,7 @@
 
 ;; Journal
 (setq org-journal-dir "~/Datastore/org-journal-personal/")
+(setq org-journal-file-format "%Y%m%d.org")
 (setq org-journal-carryover-items "")
 
 ;; Taken from here: https://emacs.stackexchange.com/questions/17897/create-an-org-journal-template-for-daily-journal-entry
