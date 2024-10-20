@@ -4,12 +4,15 @@
 ;; Dependencies
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/websocket"))    ;; Websocket library (https://github.com/ahyatt/emacs-websocket)
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/simple-httpd")) ;; Simple web server
+
+;; Loading this from an installed package at the moment
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/emacsql"))      ;; Add emacsql (A dependency of org-roam among other things)
 
 ;; Core libraries
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/org/lisp"))     ;; Add org-core
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/org-journal"))  ;; Add org-journal
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/org-roam"))     ;; Add org-roam
+(add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/org-roam/extensions"))  ;; Add org-roam extensions (like org-roam-dailies)
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/org-roam-ui"))  ;; Add org-roam-ui (https://github.com/org-roam/org-roam-ui)
 
 (add-to-list 'load-path (expand-file-name "~/Work/Emacs-libraries/deft"))         ;; Add deft
@@ -45,7 +48,7 @@
   (not (file-exists-p (buffer-file-name))))
 
 (defun joshua/insert-journal-template ()
-  (let ((template-file (expand-file-name "template.org" org-journal-dir)))
+  (let ((template-file (expand-file-name "journal-template.org" org-journal-dir)))
     (when (joshua/new-journal-buffer)
       (save-excursion
         (insert-file-contents template-file)))))
@@ -105,7 +108,7 @@
 ;; Roam
 (setq org-roam-directory "~/Datastore/org/org-roam")
 (setq org-roam-index-file "~/Datastore/org/org-roam/20201120145954-index.org")
-
+(setq find-file-visit-truename t)
 (org-roam-db-autosync-mode)
 
 
@@ -137,6 +140,9 @@
 
 ;; Deft keys
 (global-set-key (kbd "C-o d") 'deft)
+
+;; Org-journal
+(global-set-key (kbd "C-o j n") 'org-journal-new-entry)
 
 ;; Post-load hook
 (eval-after-load "org"
