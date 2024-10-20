@@ -44,6 +44,7 @@
 (setq org-journal-dir "~/Datastore/org-journal-personal/")
 (setq org-journal-carryover-items "")
 
+;; Taken from here: https://emacs.stackexchange.com/questions/17897/create-an-org-journal-template-for-daily-journal-entry
 (defun joshua/new-journal-buffer ()
   (not (file-exists-p (buffer-file-name))))
 
